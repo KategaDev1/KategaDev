@@ -1,1 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KategaDev | Official Hub</title>
+    <style>
+        :root {
+            --primary-purple: #a020f0;
+            --accent-blue: #00d2ff;
+            --glass-bg: rgba(0, 0, 0, 0.75);
+            --text-light: #ffffff;
+            /* Brand Colors */
+            --roblox-red: #f63131;
+            --youtube-red: #ff0000;
+            --x-black: #000000;
+            --discord-blurple: #5865F2;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gotham', 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #121212;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/background.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 35px 25px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .avatar-container {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-purple);
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(160, 32, 240, 0.5);
+            background: #1a1a1a;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        /* Button Grid System */
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Brand Classes */
+        .btn-roblox { background-color: var(--roblox-red); }
+        .btn-group { background-color: #3e3e3e; }
+        .btn-yt { background-color: var(--youtube-red); }
+        .btn-x { background-color: var(--x-black); border: 1px solid #444; }
+        
+        .btn-discord { 
+            background-color: var(--discord-blurple); 
+            grid-column: span 2; 
+            margin-top: 5px;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 480px) {
+            .profile-card {
+                padding: 25px 20px;
+            }
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            .btn-discord {
+                grid-column: span 1;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <div class="avatar-container">
+            <img src="images/Katega.webp" alt="KategaDev Avatar" id="pfp">
+        </div>
+        
+        <h1>KategaDev</h1>
+        <p class="subtitle">Creator & Developer</p>
+
+        <div class="social-grid">
+            <a href="https://www.roblox.com/users/1214944922/profile" target="_blank" class="btn btn-roblox">Profile</a>
+            <a href="https://www.roblox.com/communities/15431373/KategaDev-Fan-Group#!/about" target="_blank" class="btn btn-group">My Group</a>
+            
+            <a href="https://www.youtube.com/channel/UChkle7JvLjD5gbDbP32nDxQ" target="_blank" class="btn btn-yt">YouTube</a>
+            <a href="https://x.com/KategaDev" target="_blank" class="btn btn-x">X / Twitter</a>
+            
+            <a href="https://discord.com/invite/YrW7wGZUEx" target="_blank" class="btn btn-discord">
+                Join Discord Server
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Log for debugging
+            console.log("KategaDev Social Hub Initialized");
+
+            // Add a subtle parallax effect to the card based on mouse movement
+            const card = document.querySelector('.profile-card');
+            
+            if (window.innerWidth > 768) { // Only on desktop
+                document.addEventListener('mousemove', (e) => {
+                    let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                    let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                    card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                });
+
+                // Reset on mouse leave
+                document.addEventListener('mouseleave', () => {
+                    card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+                    card.style.transition = "all 0.5s ease";
+                });
+            }
+        });
+    </script>
+</body>
+</html>
